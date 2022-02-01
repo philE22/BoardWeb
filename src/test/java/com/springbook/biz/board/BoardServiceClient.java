@@ -10,6 +10,7 @@ import com.springbook.biz.board.impl.BoardService;
 
 public class BoardServiceClient {
 	public static void main(String[] args) {
+		
 		// 1. Spring 컨테이너를 구동한다.
 		AbstractApplicationContext container = new GenericXmlApplicationContext("applicationContext.xml");
 
