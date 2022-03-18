@@ -1,15 +1,59 @@
 package com.springbook.biz.board;
 
-import java.sql.Date;
+import java.util.Date;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 // VO(Value Object) == DTO
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BoardVO {
+	@XmlAttribute
 	private int seq;
 	private String title;
 	private String writer;
 	private String content;
-	private Date regDtae;
+	private Date regDate;
 	private int cnt;
+	@XmlTransient
+	private String searchCondition;
+	@XmlTransient
+	private String searchKeyword;
+	@XmlTransient
+	private MultipartFile uploadFile;
+
+	@JsonIgnore
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+
+	@JsonIgnore
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+
+	@JsonIgnore
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
 
 	public int getSeq() {
 		return seq;
@@ -43,12 +87,12 @@ public class BoardVO {
 		this.content = content;
 	}
 
-	public Date getRegDtae() {
-		return regDtae;
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	public void setRegDtae(Date regDtae) {
-		this.regDtae = regDtae;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 
 	public int getCnt() {
@@ -61,8 +105,9 @@ public class BoardVO {
 	
 	@Override
 	public String toString() {
-		return "BoardVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDtae="
-				+ regDtae + ", cnt=" + cnt + "]";
+		return "BoardVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
+				+ regDate + ", cnt=" + cnt + ", searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword
+				+ "]";
 	}
 	
 }

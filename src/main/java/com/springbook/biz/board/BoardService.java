@@ -1,8 +1,6 @@
-package com.springbook.biz.board.impl;
+package com.springbook.biz.board;
 
 import java.util.List;
-
-import com.springbook.biz.board.BoardVO;
 
 public interface BoardService {
 

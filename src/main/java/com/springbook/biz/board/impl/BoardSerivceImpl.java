@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 
 
@@ -12,8 +13,12 @@ import com.springbook.biz.board.BoardVO;
 public class BoardSerivceImpl implements BoardService {
 	@Autowired
 	private BoardDAO boardDAO;
+	
 
 	public void insertBoard(BoardVO vo) {
+//		if(vo.getSeq() == 0) {
+//			throw new IllegalArgumentException("0번 글은 등록할 수 없습니다.");
+//		}
 		boardDAO.insertBoard(vo);
 	}
 
